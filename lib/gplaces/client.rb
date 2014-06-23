@@ -9,13 +9,18 @@ module Gplaces
 
     def autocomplete(input, options = {})
       raise InvalidRequestError if input.empty?
-      input = URI::encode(input)
+
+      input    = URI::encode(input)
       location = options[:location]
-      radius = options[:radius]
+      radius   = options[:radius]
+      types    = options[:types]
       language = options[:language]
+
       #TODO: Use httparty params
       params = "input=#{input}"
-      params << "&types=geocode&sensor=true&key=#{@key}"
+      params << "&key=#{@key}"
+      params << "&sensor=true"
+      parmas << "&types=#{types}" if types
       params << "&language=#{language}" if language
       params << "&location=#{location.first},#{location.last}" if location
       params << "&radius=#{radius}" if radius

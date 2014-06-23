@@ -3,10 +3,10 @@ require 'spec_helper'
 describe Gplaces::Client do
 
   before do
-    stub_request(:get, Gplaces::AUTOCOMPLETE_URI + "json?input=Vict&key=API&sensor=true&types=geocode")
+    stub_request(:get, Gplaces::AUTOCOMPLETE_URI + "json?input=Vict&key=API&sensor=true")
       .to_return(body: fixture('autocomplete.json'), headers: {:content_type => "application/json; charset=utf-8"})
 
-    stub_request(:get, Gplaces::AUTOCOMPLETE_URI + "json?input=Vict&key=INVALID&sensor=true&types=geocode")
+    stub_request(:get, Gplaces::AUTOCOMPLETE_URI + "json?input=Vict&key=INVALID&sensor=true")
       .to_return(body: fixture('error_request_denied.json'), headers: {:content_type => "application/json; charset=utf-8"})
 
     stub_request(:get, Gplaces::PLACE_DETAILS_URI + "json?key=API&language=en&reference=CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g&sensor=true")
