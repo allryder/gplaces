@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Gplaces::Error do 
+describe Gplaces::Error do
 
   it "forward error for now" do
     begin
