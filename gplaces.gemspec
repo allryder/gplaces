@@ -19,4 +19,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'virtus'
   gem.add_dependency 'httparty'
+
+  gem.add_development_dependency 'rspec', '~> 3.0'
+  gem.add_development_dependency 'webmock', '~> 1.18'
 end
