@@ -19,7 +19,6 @@ module Gplaces
       #TODO: Use httparty params
       params = "input=#{input}"
       params << "&key=#{@key}"
-      params << "&sensor=true"
       params << "&types=#{types}" if types
       params << "&language=#{language}" if language
       params << "&location=#{location.first},#{location.last}" if location
