@@ -30,7 +30,7 @@ module Gplaces
     end
 
     def details(reference, language)
-      response = HTTParty.get("#{PLACE_DETAILS_URI}json?reference=#{reference}&sensor=true&key=#{@key}&language=#{language}")
+      response = HTTParty.get("#{PLACE_DETAILS_URI}json?reference=#{reference}&key=#{@key}&language=#{language}")
       check_status(response)
       attrs = JSON.parse(response.body)['result']
       attrs[:city] = city(attrs)
