@@ -20,7 +20,7 @@ module Gplaces
       params = "input=#{input}"
       params << "&key=#{@key}"
       params << "&sensor=true"
-      parmas << "&types=#{types}" if types
+      params << "&types=#{types}" if types
       params << "&language=#{language}" if language
       params << "&location=#{location.first},#{location.last}" if location
       params << "&radius=#{radius}" if radius
