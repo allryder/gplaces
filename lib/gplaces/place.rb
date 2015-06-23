@@ -17,6 +17,10 @@ module Gplaces
     attribute :city, :String
     attribute :geometry, Geometry
     attribute :is_city, :Boolean
+
+    def location
+      geometry.location
+    end
   end
 
 end
