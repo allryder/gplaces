@@ -16,7 +16,6 @@ module Gplaces
       types    = options[:types]
       language = options[:language]
 
-      #TODO: Use httparty params
       params = "input=#{input}"
       params << "&key=#{@key}"
       params << "&types=#{types}" if types
@@ -30,21 +29,19 @@ module Gplaces
     end
 
     def details(place_id, language)
-      response = HTTParty.get("#{PLACE_DETAILS_URI}json?placeid=#{place_id}&key=#{@key}&language=#{language}")
-      check_status(response)
-      attrs = JSON.parse(response.body)['result']
-      attrs[:city] = city(attrs)
-      attrs[:is_city] = is_city(attrs['address_components'])
-      place(attrs)
-    end
+      params = "placeid=#{place_id}"
+      params << "&key=#{@key}"
+      params << "&language=#{language}" if language
 
-    def is_city(address_components)
-      !address_components.nil? && !address_components.empty? && address_components[0]["types"].include?('locality')
+      response = HTTParty.get("#{PLACE_DETAILS_URI}json?#{params}")
+      check_status(response)
+      place(JSON.parse(response.body)['result'])
     end
 
     private
-    def predictions(preds)
-      preds.map{|pred| Prediction.new(pred)}
+
+    def predictions(list)
+      list.map { |attrs| Prediction.new(attrs) }
     end
 
     def place(attrs)
@@ -54,19 +51,6 @@ module Gplaces
     def check_status(response)
       raise RequestDeniedError if response['status'] == 'REQUEST_DENIED'
       raise InvalidRequestError if response['status'] == 'INVALID_REQUEST'
-    end
-
-    def city(json)
-      address_components = json['address_components']
-      if address_components && !address_components.empty?
-        address_components.each do |c|
-          types = c['types']
-          if types && types.include?('locality')
-            return c['short_name']
-          end
-        end
-      end
-      nil
     end
   end
 end
