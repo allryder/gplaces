@@ -1,7 +1,4 @@
-require 'spec_helper'
-
-describe Gplaces::Error do
-
+RSpec.describe Gplaces::Error do
   it "forward error for now" do
     begin
       raise Gplaces::Error.new("Error!")

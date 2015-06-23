@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe Gplaces::Place do
+RSpec.describe Gplaces::Place do
   subject { described_class.new(formatted_address: 'My address', geometry: {location: {lat: -33.8669330, lng: 151.1957910}})}
 
   it 'has a formatted address' do

@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'webmock/rspec'
 
-describe Gplaces::Client do
+RSpec.describe Gplaces::Client do
   let(:client){ Gplaces::Client.new('API') }
 
   describe '#autocomplete' do

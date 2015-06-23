@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe Gplaces::Prediction do
+RSpec.describe Gplaces::Prediction do
   def prediction
     described_class.new(
       description:        'description',
