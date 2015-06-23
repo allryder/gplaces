@@ -29,8 +29,8 @@ module Gplaces
       predictions(JSON.parse(response.body)['predictions'])
     end
 
-    def details(reference, language)
-      response = HTTParty.get("#{PLACE_DETAILS_URI}json?reference=#{reference}&key=#{@key}&language=#{language}")
+    def details(place_id, language)
+      response = HTTParty.get("#{PLACE_DETAILS_URI}json?placeid=#{place_id}&key=#{@key}&language=#{language}")
       check_status(response)
       attrs = JSON.parse(response.body)['result']
       attrs[:city] = city(attrs)
