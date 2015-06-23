@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency 'virtus'
-  gem.add_dependency 'httparty'
+  gem.add_dependency 'faraday'
 
   gem.add_development_dependency 'rspec', '~> 3.0'
   gem.add_development_dependency 'webmock', '~> 1.18'

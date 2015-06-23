@@ -10,35 +10,37 @@ module Gplaces
     def autocomplete(input, options = {})
       raise InvalidRequestError if input.empty?
 
-      input    = URI::encode(input)
-      location = options[:location]
-      radius   = options[:radius]
-      types    = options[:types]
-      language = options[:language]
+      params = {
+        key:      @key,
+        input:    input,
+        types:    options[:types],
+        language: options[:language],
+        location: (options[:location].join(",") if options[:location]),
+        radius:   options[:radius],
+      }.delete_if { |k, v| v.nil? }
 
-      params = "input=#{input}"
-      params << "&key=#{@key}"
-      params << "&types=#{types}" if types
-      params << "&language=#{language}" if language
-      params << "&location=#{location.first},#{location.last}" if location
-      params << "&radius=#{radius}" if radius
-
-      response = HTTParty.get("#{AUTOCOMPLETE_URI}json?#{params}")
+      response = JSON.parse(connection.get(AUTOCOMPLETE_URI, params).body)
       check_status(response)
-      predictions(JSON.parse(response.body)['predictions'])
+      predictions(response['predictions'])
     end
 
     def details(place_id, language)
-      params = "placeid=#{place_id}"
-      params << "&key=#{@key}"
-      params << "&language=#{language}" if language
+      params = {
+        key:      @key,
+        placeid:  place_id,
+        language: language,
+      }.delete_if { |k, v| v.nil? }
 
-      response = HTTParty.get("#{PLACE_DETAILS_URI}json?#{params}")
+      response = JSON.parse(connection.get(PLACE_DETAILS_URI, params).body)
       check_status(response)
-      place(JSON.parse(response.body)['result'])
+      place(response['result'])
     end
 
     private
+
+    def connection
+      @connection ||= Faraday.new(url: BASE_URI)
+    end
 
     def predictions(list)
       list.map { |attrs| Prediction.new(attrs) }

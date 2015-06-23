@@ -1,7 +1,82 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Tue, 23 Jun 2015 13:40:10 GMT
+Expires: Tue, 23 Jun 2015 13:40:10 GMT
+Cache-Control: private, max-age=300
+Server: mafe
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Alternate-Protocol: 443:quic,p=1
+Accept-Ranges: none
+Vary: Accept-Language,Accept-Encoding
+Transfer-Encoding: chunked
+
 {
    "predictions" : [
       {
-         "description" : "Victoria, Australie",
+         "description" : "Victor's Residenz-Hotel Berlin, Am Friedrichshain, Berlin, Germany",
+         "id" : "ff0c9cd913454ec3f363059d519b8b8bb2177161",
+         "matched_substrings" : [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpUfpJBBOqEcRKsPzDbknR-w",
+         "reference" : "CmRRAAAAuGsVMqZjp1gCrcAEKvK4O90iFL4Eg_FB-WA_J0RPD5zMWARg37Fw64bOFjRZbUw69jQEihkgCXyXt2esugA0ZHqDbE-Z6kRMjaAh-vFPwhOAFpoW8Q1N-D0O8nRkHFOfEhCrFU19-097f2jFB2PvNOd3GhTtTYqlUGseCcqo4kkFa98Vx_12xA",
+         "terms" : [
+            {
+               "offset" : 0,
+               "value" : "Victor's Residenz-Hotel Berlin"
+            },
+            {
+               "offset" : 32,
+               "value" : "Am Friedrichshain"
+            },
+            {
+               "offset" : 51,
+               "value" : "Berlin"
+            },
+            {
+               "offset" : 59,
+               "value" : "Germany"
+            }
+         ],
+         "types" : [ "establishment" ]
+      },
+      {
+         "description" : "Victory Column, Großer Stern, Berlin, Germany",
+         "id" : "555009c7ec6e0b2d0a42ad7b2d0931b36aee1c9e",
+         "matched_substrings" : [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJw_HTKK9RqEcRyeWAo9t_YlU",
+         "reference" : "CkQ8AAAAgFkZRDXqMisQFmmilrb5iYBF23lRuZuU7EFgEl2HvtWQ2MOHXybKJTJuiL7N0mEU50L7VDViVwVZRB0i4O5oxhIQDKnRv5tUtva7wTsaocROjBoUPGoZt8Suk6ofTYDnX4eNhE24YwY",
+         "terms" : [
+            {
+               "offset" : 0,
+               "value" : "Victory Column"
+            },
+            {
+               "offset" : 16,
+               "value" : "Großer Stern"
+            },
+            {
+               "offset" : 30,
+               "value" : "Berlin"
+            },
+            {
+               "offset" : 38,
+               "value" : "Germany"
+            }
+         ],
+         "types" : [ "establishment" ]
+      },
+      {
+         "description" : "Victoria, Australia",
          "id" : "0328fb981d48f228012b5d4b7ab0d0f404f439fd",
          "matched_substrings" : [
             {
@@ -9,7 +84,8 @@
                "offset" : 0
             }
          ],
-         "reference" : "CjQrAAAA3_NJmFayfngl7JLWouqIpqMAhtgDVq3nR09zppqinlxVRtf5REkZ4_MQ4BTSbKECEhCVk8XmYpD9IRdlopGf0eTYGhRbAtxRcNyjxZCucHaW2di57WtYCQ",
+         "place_id" : "ChIJT5UYfksx1GoRNJWCvuL8Tlo",
+         "reference" : "CjQrAAAAi9nl2Rd6Jq0ueuZ768Q7Dza3_PSlkZeRb7ymv3poBnsEiF4vx_lOqOKOwqd9RrqnEhCI6spYb5YY6H8qoZgi3hPTGhQcg4ojQRkTAnXH6HQ6Ien0CEXrzA",
          "terms" : [
             {
                "offset" : 0,
@@ -17,114 +93,68 @@
             },
             {
                "offset" : 10,
-               "value" : "Australie"
+               "value" : "Australia"
             }
          ],
          "types" : [ "administrative_area_level_1", "political", "geocode" ]
       },
       {
-         "description" : "Victoria, BC, Canada",
-         "id" : "d5892cffd777f0252b94ab2651fea7123d2aa34a",
+         "description" : "victoria bar berlin, Potsdamer Straße, Berlin, Germany",
+         "id" : "2ebb7b65cb15f937c89249eefc9f558756d50b38",
          "matched_substrings" : [
             {
                "length" : 4,
                "offset" : 0
             }
          ],
-         "reference" : "CjQsAAAAaT99iW_b47zFLbzzrBfR2CQ4Uh9ClFbxaRfDPZkoBmXEqPqhQU9ygq5U4YJ6wsvgEhAFMsm0qKX43oQj6eNefEj4GhR-wO-ZhPxU5RFkNIWXIoDHUrlTdg",
+         "place_id" : "ChIJH01pX0pQqEcRV2XD4zcfDxs",
+         "reference" : "ClRFAAAANI1ZrJ4UnMRwqvsZr9M69i-8Jp0yVkGF57j0-O6E5wS7RDt5YPZBh13iCiVzj7BgVHYmQNk0idn7_9Smq3iOg0IFzBgY2c3ryW1VZwuuP8wSEBqHiEtZnrx_JkNvNXvNCjMaFLm3zsokvLv9ayJ65RVj77RtFjsn",
          "terms" : [
             {
                "offset" : 0,
-               "value" : "Victoria"
+               "value" : "victoria bar berlin"
             },
             {
-               "offset" : 10,
-               "value" : "BC"
+               "offset" : 21,
+               "value" : "Potsdamer Straße"
             },
             {
-               "offset" : 14,
-               "value" : "Canada"
+               "offset" : 39,
+               "value" : "Berlin"
+            },
+            {
+               "offset" : 47,
+               "value" : "Germany"
             }
          ],
-         "types" : [ "locality", "political", "geocode" ]
+         "types" : [ "establishment" ]
       },
       {
-         "description" : "Victorville, Californie, États-Unis",
-         "id" : "dd296d3fde2a539b9279cdd817c01183f69d07a7",
+         "description" : "Victoriastadt, Berlin, Germany",
+         "id" : "5d9532390db57a723abb209f051146b452728779",
          "matched_substrings" : [
             {
                "length" : 4,
                "offset" : 0
             }
          ],
-         "reference" : "CkQ8AAAAhrrmGfehgf4h93fJ0CCjSOS0mx26AVOBdtQk23g3_x41O9tTebjTtTwXsXWj4qAXPbLNwBBNou-gUH0ilYE2txIQ3T1kTiQTLAJu1xELtxVIahoUm_t65CXJwnqu2M6QPo_bNAKLiNo",
+         "place_id" : "ChIJw3Do1u9OqEcRwsumzWaG1GU",
+         "reference" : "CkQ2AAAAg9bRcJdgmdDyctML3JBGD6pxDRLCS7NrMPEbZeiukrOnrMlXLs2qp82CyFW5wvz40fCBlVdnkjUfpN6V5bWI5BIQ0xQFKU9BliRu00CpJ6HGpRoUkM7mq_zIirPm_LlYzauJYG53r8c",
          "terms" : [
             {
                "offset" : 0,
-               "value" : "Victorville"
-            },
-            {
-               "offset" : 13,
-               "value" : "Californie"
-            },
-            {
-               "offset" : 25,
-               "value" : "États-Unis"
-            }
-         ],
-         "types" : [ "locality", "political", "geocode" ]
-      },
-      {
-         "description" : "Victoria, Texas, États-Unis",
-         "id" : "003e8789b133eaa54fe0e7fdde07944c4849c1b5",
-         "matched_substrings" : [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "reference" : "CkQ0AAAAxKnbuRL1PsO3u-GlulcV3GpJXt_c8NFZNbAGcCwwo47O1KJqenArxwLZh4qnpEUB_MJ3gJTvSc-nM9GHcNBl8BIQ8vVohLoLrrbttO-hoCBJrRoUF8ufm8mgrATd1muNms8Qap-_DRE",
-         "terms" : [
-            {
-               "offset" : 0,
-               "value" : "Victoria"
-            },
-            {
-               "offset" : 10,
-               "value" : "Texas"
-            },
-            {
-               "offset" : 17,
-               "value" : "États-Unis"
-            }
-         ],
-         "types" : [ "locality", "political", "geocode" ]
-      },
-      {
-         "description" : "Victoriaville, QC, Canada",
-         "id" : "ed3fa17b25b3bb8c55fe7a5c42e1f31abf481e85",
-         "matched_substrings" : [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "reference" : "CkQxAAAAAhMb4uFTg4GZiUs7riBvEpBsGE5EMAI5HKk1D6VF-uJx36-_s6zKibaNlsw7LZA45PiqWyofz9xI9-QsBLe4OhIQn9HRAWC3dAl4UrnDC5FEaRoUoQu_6npGRhY11XR1dm9p56b6qWg",
-         "terms" : [
-            {
-               "offset" : 0,
-               "value" : "Victoriaville"
+               "value" : "Victoriastadt"
             },
             {
                "offset" : 15,
-               "value" : "QC"
+               "value" : "Berlin"
             },
             {
-               "offset" : 19,
-               "value" : "Canada"
+               "offset" : 23,
+               "value" : "Germany"
             }
          ],
-         "types" : [ "locality", "political", "geocode" ]
+         "types" : [ "neighborhood", "political", "geocode" ]
       }
    ],
    "status" : "OK"

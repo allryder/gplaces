@@ -1,4 +1,19 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Tue, 23 Jun 2015 13:41:32 GMT
+Pragma: no-cache
+Expires: Fri, 01 Jan 1990 00:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+Server: mafe
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Alternate-Protocol: 443:quic,p=1
+Accept-Ranges: none
+Vary: Accept-Language,Accept-Encoding
+Transfer-Encoding: chunked
+
 {
+   "error_message" : "The provided API key is invalid.",
    "predictions" : [],
    "status" : "REQUEST_DENIED"
 }
