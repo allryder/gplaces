@@ -3,6 +3,14 @@ module Gplaces
     include Virtus.model
     attribute :lat, Float
     attribute :lng, Float
+
+    def to_a
+      [lat, lng]
+    end
+
+    def to_s
+      to_a.join(",")
+    end
   end
 
   class Geometry
