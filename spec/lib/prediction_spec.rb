@@ -1,9 +1,7 @@
 RSpec.describe Gplaces::Prediction do
   def prediction
-    described_class.new(
-      place_id:    "place_id",
-      description: "description"
-    )
+    described_class.new(place_id:    "place_id",
+                        description: "description")
   end
 
   it "has a description" do
