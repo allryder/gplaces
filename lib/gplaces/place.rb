@@ -13,9 +13,7 @@ module Gplaces
   class Place
     include Virtus.model
     attribute :formatted_address, :String
-    attribute :city, :String
     attribute :geometry, Geometry
-    attribute :is_city, :Boolean
 
     def location
       geometry.location
