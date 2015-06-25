@@ -1,5 +1,5 @@
 RSpec.describe Gplaces::Prediction do
-  def prediction
+  let(:prediction) do
     described_class.new(place_id:    "place_id",
                         description: "description")
   end
