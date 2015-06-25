@@ -1,6 +1,3 @@
-require "faraday"
-require "virtus"
-
 module Gplaces
   BASE_URI          = "https://maps.googleapis.com".freeze
   AUTOCOMPLETE_URI  = "/maps/api/place/autocomplete/json".freeze

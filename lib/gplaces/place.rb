@@ -1,8 +1,11 @@
 module Gplaces
   class Location
-    include Virtus.model
-    attribute :lat, Float
-    attribute :lng, Float
+    attr_reader :lat, :lng
+
+    def initialize(attributes)
+      @lat = attributes[:lat].to_f
+      @lng = attributes[:lng].to_f
+    end
 
     def to_a
       [lat, lng]
@@ -13,19 +16,12 @@ module Gplaces
     end
   end
 
-  class Geometry
-    include Virtus.model
-    attribute :location, Location
-  end
-
   class Place
-    include Virtus.model
-    attribute :formatted_address, :String
-    attribute :geometry, Geometry
+    attr_reader :formatted_address, :location
 
-    def location
-      return if geometry.nil?
-      geometry.location
+    def initialize(attributes)
+      @formatted_address = attributes[:formatted_address]
+      @location          = Location.new(attributes[:geometry][:location]) if attributes[:geometry]
     end
   end
 end

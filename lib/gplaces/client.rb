@@ -1,3 +1,4 @@
+require "faraday"
 require "json"
 
 module Gplaces
@@ -18,9 +19,9 @@ module Gplaces
         radius:   options[:radius],
       }.delete_if { |_k, v| v.nil? }
 
-      response = JSON.parse(connection.get(AUTOCOMPLETE_URI, params).body)
+      response = JSON.parse(connection.get(AUTOCOMPLETE_URI, params).body, symbolize_names: true)
       check_status(response)
-      predictions(response["predictions"])
+      predictions(response[:predictions])
     end
 
     def details(place_id, language)
@@ -30,9 +31,9 @@ module Gplaces
         language: language,
       }.delete_if { |_k, v| v.nil? }
 
-      response = JSON.parse(connection.get(PLACE_DETAILS_URI, params).body)
+      response = JSON.parse(connection.get(PLACE_DETAILS_URI, params).body, symbolize_names: true)
       check_status(response)
-      place(response["result"])
+      place(response[:result])
     end
 
     private
@@ -42,16 +43,16 @@ module Gplaces
     end
 
     def predictions(list)
-      list.map { |attrs| Prediction.new(attrs) }
+      list.map { |attributes| Prediction.new(attributes) }
     end
 
-    def place(attrs)
-      Place.new(attrs)
+    def place(attributes)
+      Place.new(attributes)
     end
 
     def check_status(response)
-      fail RequestDeniedError if response["status"] == "REQUEST_DENIED"
-      fail InvalidRequestError if response["status"] == "INVALID_REQUEST"
+      fail RequestDeniedError if response[:status] == "REQUEST_DENIED"
+      fail InvalidRequestError if response[:status] == "INVALID_REQUEST"
     end
   end
 end
