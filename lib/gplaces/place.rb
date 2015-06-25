@@ -24,6 +24,7 @@ module Gplaces
     attribute :geometry, Geometry
 
     def location
+      return if geometry.nil?
       geometry.location
     end
   end
