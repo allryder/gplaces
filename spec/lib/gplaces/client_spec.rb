@@ -39,7 +39,7 @@ RSpec.describe Gplaces::Client do
 
     it "gets the place details" do
       expect(client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en")
-                   .formatted_address).to eq("Pirrama Rd, Pyrmont NSW 2009, Australia")
+                   .city).to eq("Pyrmont")
     end
   end
 end
