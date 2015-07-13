@@ -41,5 +41,17 @@ RSpec.describe Gplaces::Client do
       expect(client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en")
                    .city).to eq("Pyrmont")
     end
+
+    context "when place details are not available" do
+      before do
+        stub_request(:get, "https://maps.googleapis.com/maps/api/place/details/json?key=API&language=en" \
+                         "&placeid=ChIJl-emOTauEmsRVuhkf-gObv8")
+          .to_return(fixture("error_not_found.json"))
+      end
+
+      it "throws an error" do
+        expect { client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en") }.to raise_error(Gplaces::NotFoundError)
+      end
+    end
   end
 end

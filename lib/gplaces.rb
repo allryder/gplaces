@@ -10,4 +10,5 @@ module Gplaces
   autoload :Error,               "gplaces/error"
   autoload :RequestDeniedError,  "gplaces/error"
   autoload :InvalidRequestError, "gplaces/error"
+  autoload :NotFoundError,       "gplaces/error"
 end

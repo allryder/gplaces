@@ -53,6 +53,7 @@ module Gplaces
     def check_status(response)
       fail RequestDeniedError if response[:status] == "REQUEST_DENIED"
       fail InvalidRequestError if response[:status] == "INVALID_REQUEST"
+      fail NotFoundError if response[:status] == "NOT_FOUND"
     end
   end
 end
