@@ -38,7 +38,7 @@ module Gplaces
 
       components.each do |component|
         types = component[:types]
-        return component[:short_name] if types && types.include?("locality")
+        return component[:long_name] if types && types.include?("locality")
       end
       nil
     end
