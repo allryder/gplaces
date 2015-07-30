@@ -1,4 +1,4 @@
-require "faraday"
+require "curl"
 require "json"
 
 module Gplaces
@@ -19,7 +19,7 @@ module Gplaces
         radius:   options[:radius],
       }.delete_if { |_k, v| v.nil? }
 
-      response = JSON.parse(connection.get(AUTOCOMPLETE_URI, params).body, symbolize_names: true)
+      response = json_response(:autocomplete, params)
       check_status(response)
       predictions(response[:predictions])
     end
@@ -31,15 +31,16 @@ module Gplaces
         language: language,
       }.delete_if { |_k, v| v.nil? }
 
-      response = JSON.parse(connection.get(PLACE_DETAILS_URI, params).body, symbolize_names: true)
+      response = json_response(:details, params)
       check_status(response)
       place(response[:result])
     end
 
     private
 
-    def connection
-      @connection ||= Faraday.new(url: BASE_URI)
+    def json_response(type, params)
+      JSON.parse(Curl.get("https://maps.googleapis.com/maps/api/place/#{type}/json", params).body_str,
+                 symbolize_names: true)
     end
 
     def predictions(list)
