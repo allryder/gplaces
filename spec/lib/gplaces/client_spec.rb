@@ -38,8 +38,7 @@ RSpec.describe Gplaces::Client do
     end
 
     it "gets the place details" do
-      expect(client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en")
-                   .city).to eq("Pyrmont")
+      expect(client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en").city).to eq("Pyrmont")
     end
 
     context "when place details are not available" do
