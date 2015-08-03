@@ -45,7 +45,7 @@ RSpec.describe Gplaces::Client do
     context "when place details are not available" do
       before do
         stub_request(:get, "https://maps.googleapis.com/maps/api/place/details/json?key=API&language=en" \
-                         "&placeid=ChIJl-emOTauEmsRVuhkf-gObv8")
+                           "&placeid=ChIJl-emOTauEmsRVuhkf-gObv8")
           .to_return(fixture("error_not_found.json"))
       end
 
