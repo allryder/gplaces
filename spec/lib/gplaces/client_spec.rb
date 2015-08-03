@@ -53,4 +53,49 @@ RSpec.describe Gplaces::Client do
       end
     end
   end
+
+  describe "#details_multi" do
+    it "requests all of the given places details" do
+      # Stubbing curl multi request is currently not supported in Webmock...
+      expect(Curl::Multi).to receive(:get).with(
+        %w(
+          https://maps.googleapis.com/maps/api/place/details/json?key=API&placeid=foo&language=en
+          https://maps.googleapis.com/maps/api/place/details/json?key=API&placeid=bar&language=en
+        ),
+        any_args
+      )
+      client.details_multi(*%w(foo bar), "en")
+    end
+
+    it "uses http pipelining" do
+      expect(Curl::Multi).to receive(:get).with(
+        any_args,
+        pipeline: true
+      )
+      client.details_multi(*%w(foo bar), "en")
+    end
+
+    it "creates places" do
+      allow(Curl::Multi).to receive(:get).and_yield(double(body: '{"result":{"place_id":"foo"},"status":"OK"}'))
+                                         .and_yield(double(body: '{"result":{"place_id":"bar"},"status":"OK"}'))
+
+      client.details_multi(*%w(foo bar), "en").tap do |places|
+        expect(places.count).to eq(2)
+        expect(places.map(&:place_id)).to eq(%w(foo bar))
+      end
+    end
+
+    context "when place details are not available" do
+      it "skips place in question" do
+        allow(Curl::Multi).to receive(:get).and_yield(double(body: '{"result":{"place_id":"foo"},"status":"OK"}'))
+                                           .and_yield(double(body: '{"status":"NOT_FOUND"}'))
+
+        client.details_multi(*%w(foo bar), "en").tap do |places|
+          expect(places.count).to eq(2)
+          expect(places.first.place_id).to eq("foo")
+          expect(places.last).to eq(nil)
+        end
+      end
+    end
+  end
 end

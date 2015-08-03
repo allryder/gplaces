@@ -1,5 +1,13 @@
 RSpec.describe Gplaces::Place do
-  it "has lat and lng" do
+  it "has a place id" do
+    place = described_class.new(
+      place_id: "ChIJc1aq0AlaqEcRIiiPcWPAhIw"
+    )
+
+    expect(place.place_id).to eq("ChIJc1aq0AlaqEcRIiiPcWPAhIw")
+  end
+
+  it "has a location" do
     place = described_class.new(
       geometry: {
         location: {

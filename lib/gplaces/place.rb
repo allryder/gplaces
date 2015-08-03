@@ -17,9 +17,10 @@ module Gplaces
   end
 
   class Place
-    attr_reader :name, :location, :city
+    attr_reader :place_id, :name, :location, :city
 
     def initialize(attributes)
+      @place_id = attributes[:place_id]
       @name     = attributes[:name]
       @location = location_from(attributes[:geometry])
       @city     = city_from_address_components(attributes[:address_components])
