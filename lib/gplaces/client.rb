@@ -39,8 +39,13 @@ module Gplaces
     private
 
     def json_response(type, params)
-      JSON.parse(Curl.get("https://maps.googleapis.com/maps/api/place/#{type}/json", params).body_str,
-                 symbolize_names: true)
+      JSON.parse(raw_response(type, params).body, symbolize_names: true)
+    end
+
+    def raw_response(type, params)
+      Curl.get("https://maps.googleapis.com/maps/api/place/#{type}/json", params) do |curl|
+        curl.follow_location = true
+      end
     end
 
     def predictions(list)
