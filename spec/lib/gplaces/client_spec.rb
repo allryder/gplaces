@@ -37,8 +37,12 @@ RSpec.describe Gplaces::Client do
         .to_return(fixture("details.json"))
     end
 
-    it "gets the place details" do
+    it "gets the place details (city)" do
       expect(client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en").city).to eq("Pyrmont")
+    end
+
+    it "gets the place details (postal code)" do
+      expect(client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en").postal_code).to eq("2009")
     end
 
     context "when place details are not available" do

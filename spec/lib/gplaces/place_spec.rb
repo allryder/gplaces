@@ -26,4 +26,18 @@ RSpec.describe Gplaces::Place do
 
     expect(place.city).to eq("Long Name")
   end
+
+  it "has a postal code" do
+    place = described_class.new(
+      address_components: [
+        {
+          long_name:  "555-123",
+          short_name: "555",
+          types:      %w(postal_code),
+        },
+      ]
+    )
+
+    expect(place.postal_code).to eq("555-123")
+  end
 end
