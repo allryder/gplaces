@@ -17,12 +17,13 @@ module Gplaces
   end
 
   class Place
-    attr_reader :name, :location, :city
+    attr_reader :name, :location, :city, :postal_code
 
     def initialize(attributes)
-      @name     = attributes[:name]
-      @location = location_from(attributes[:geometry])
-      @city     = city_from_address_components(attributes[:address_components])
+      @name        = attributes[:name]
+      @location    = location_from(attributes[:geometry])
+      @city        = extract(:locality, attributes[:address_components])
+      @postal_code = extract(:postal_code, attributes[:address_components])
     end
 
     private
@@ -33,12 +34,12 @@ module Gplaces
       Location.new(geometry[:location])
     end
 
-    def city_from_address_components(components)
+    def extract(key, components)
       return if components.nil? || components.empty?
 
       components.each do |component|
         types = component[:types]
-        return component[:long_name] if types && types.include?("locality")
+        return component[:long_name] if types && types.include?(key.to_s)
       end
       nil
     end
