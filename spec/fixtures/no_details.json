@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Tue, 23 Jun 2015 13:31:03 GMT
+Expires: Tue, 23 Jun 2015 13:36:03 GMT
+Cache-Control: public, max-age=300
+Server: mafe
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Alternate-Protocol: 443:quic,p=1
+Accept-Ranges: none
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+
+{
+   "html_attributions" : [],
+   "result" : null,
+   "status" : "OK"
+}

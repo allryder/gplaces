@@ -56,5 +56,17 @@ RSpec.describe Gplaces::Client do
         expect { client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en") }.to raise_error(Gplaces::NotFoundError)
       end
     end
+
+    context "when results come empty" do
+      before do
+        stub_request(:get, "https://maps.googleapis.com/maps/api/place/details/json?key=API&language=en" \
+                         "&placeid=ChIJl-emOTauEmsRVuhkf-gObv8")
+        .to_return(fixture("no_details.json"))
+      end
+
+      it "throws an error" do
+        expect { client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en") }.to raise_error(Gplaces::NotFoundError)
+      end
+    end
   end
 end
