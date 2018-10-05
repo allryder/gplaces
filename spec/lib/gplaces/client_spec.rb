@@ -45,6 +45,23 @@ RSpec.describe Gplaces::Client do
       expect(client.details("ChIJl-emOTauEmsRVuhkf-gObv8", "en").postal_code).to eq("2009")
     end
 
+    context "when options are added" do
+      let(:place_id) { "ChIJl-emOTauEmsRVuhkf-gObv8" }
+      let(:fields) { "address_component,formatted_address,geometry,type,vicinity,place_id" }
+      let(:options) { { fields: fields } }
+      subject { client.details(place_id, "en", options) }
+
+      before do
+        stub_request(:get, "https://maps.googleapis.com/maps/api/place/details/json?fields=#{fields}" \
+                           "&key=API&language=en&placeid=#{place_id}")
+          .to_return(fixture("details.json"))
+      end
+
+      it "gets the place details (city)" do
+        expect(subject.city).to eq("Pyrmont")
+      end
+    end
+
     context "when place details are not available" do
       before do
         stub_request(:get, "https://maps.googleapis.com/maps/api/place/details/json?key=API&language=en" \

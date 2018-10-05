@@ -24,14 +24,14 @@ module Gplaces
       predictions(response[:predictions])
     end
 
-    def details(place_id, language)
+    def details(place_id, language, options = {})
       params = {
         key:      @key,
         placeid:  place_id,
         language: language,
       }.delete_if { |_k, v| v.nil? }
 
-      response = json_response(:details, params)
+      response = json_response(:details, params.merge(options))
       check_status(response)
       place(response[:result])
     end
